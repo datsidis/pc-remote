@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' data:; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;" />
+<title>PC Remote</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">●</span>
+        <div>
+          <h1>PC Remote</h1>
+          <p class="brand-sub">Control deck</p>
+        </div>
+      </div>
+      <div class="status-pill" id="status-pill">
+        <span class="dot" id="status-dot"></span>
+        <span id="status-text">Starting…</span>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="card qr-card">
+        <h2 class="card-title">Scan to connect</h2>
+        <div class="qr-wrap">
+          <img id="qr-image" alt="QR code to connect phone" />
+          <div id="qr-placeholder" class="qr-placeholder">Server offline</div>
+        </div>
+        <p class="hint">Open this on a phone connected to the <strong>same Wi-Fi network</strong>.</p>
+      </section>
+
+      <section class="card info-card">
+        <h2 class="card-title">Connection info</h2>
+        <dl class="kv">
+          <div class="kv-row">
+            <dt>Address</dt>
+            <dd id="info-url" class="mono">—</dd>
+          </div>
+          <div class="kv-row">
+            <dt>Local IP</dt>
+            <dd id="info-ip" class="mono">—</dd>
+          </div>
+          <div class="kv-row">
+            <dt>Port</dt>
+            <dd id="info-port" class="mono">—</dd>
+          </div>
+          <div class="kv-row">
+            <dt>Pairing PIN</dt>
+            <dd id="info-pin" class="mono pin">—</dd>
+          </div>
+        </dl>
+
+        <p id="error-message" class="error-message" style="display:none"></p>
+
+        <div class="actions">
+          <button id="toggle-btn" class="btn btn-primary">Stop server</button>
+        </div>
+      </section>
+
+      <section class="card devices-card">
+        <h2 class="card-title">Connected devices <span id="device-count" class="badge">0</span></h2>
+        <ul id="device-list" class="device-list">
+          <li class="empty-row">No devices connected</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>PC Remote v1.0.0</span>
+      <span id="robot-status" class="mono"></span>
+    </footer>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
